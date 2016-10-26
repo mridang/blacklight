@@ -92,8 +92,8 @@ Code coverage should only be used during development and in development environm
 Authors
 -------
 
-Mridang Agarwalla
-Hannu Pölönen
+* Mridang Agarwalla
+* Hannu Pölönen
 
 
 License

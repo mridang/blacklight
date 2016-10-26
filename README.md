@@ -3,6 +3,7 @@
 
 Blacklight allows you to view the code coverage of your Magento extensions while bringing you visibility into the usage of your code. Blacklight is based on the PHPUnit's awesome code coverage library and supports the same features and backends as PHPUnit's code coverage.
 
+<img width="1144" alt="screen shot 2016-10-26 at 21 01 49" src="https://cloud.githubusercontent.com/assets/327432/19738281/7c492b08-9bbf-11e6-9be6-9f252d8d51a6.png">
 
 Requirements
 ------------

@@ -21,14 +21,14 @@ The extension package archive can be obtained from the project's [releases](http
 
 The extension can be installed directly from the GitHub repository by cloning the project and using Modman. For the extension to work, it's dependencies also need to be installed by running `composer install` in the extension's root directory. Also make sure the symlinks are allowed in your Magento installation and [Modman](https://github.com/colinmollenhour/modman) is installed.
 
-Here are the steps to install Nosto's Magento extension via Modman:
+Here are the steps to install Blacklight via Modman:
 
 1. Execute `modman init` to initialize Modman in your Magento installation root directory
 2. To clone the this repo execute `modman clone git@github.com:mridang/blacklist.git`, again in your Magento installation's root directory. You will see some errors about dependencies. Those dependencies will be fixed in the next two steps.
-3. To install the dependencies required by the extension navigate to `.modman/nosto-magento` and run `composer install`
+3. To install the dependencies required by the extension navigate to `.modman/blacklight` and run `composer install`
 4. The final step is to fix the Modman symlinks. Navigate back your Magento installation root directory and run `modman repair`.
 
-That's it! You should now have Nosto extension installed into your Magento. The sources and the repo are located under `.modman/blacklight` and you can use it as any other git repository.  
+That's it. You should now have the extension installed into your Magento installation. The sources and the repo are located under `.modman/blacklight` and you can use it as any other git repository. In order to uninstall Blacklight, run `modman undeploy blacklight`.  
 
 
 Configuration

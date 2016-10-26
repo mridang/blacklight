@@ -1,0 +1,67 @@
+{
+  "name": "Mridang_Blacklight",
+  "stability": {
+    "release": "stable"
+  },
+  "license": {
+    "_content": "MIT",
+    "attribs": {
+      "uri": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "channel": "community",
+  "summary": "Code Coverage for Magento",
+  "description": "Increase your conversion rate and average order value by delivering your customers personalized product recommendations throughout their shopping journey.",
+  "developer": {
+    "name": "Mridang",
+    "user": "mridang",
+    "email": "mridang.agarwalla+blacklight@gmail.com"
+  },
+  "date": "2016-10-26",
+  "time": "08:12:43",
+  "dependencies": {
+    "required": {
+      "php": {
+        "min": "5.6.0",
+        "max": "7.1.0"
+      },
+      "package": {
+        "name": "Mage_Core_Modules",
+        "min": "1.6.0.0",
+        "max": "1.9.2.4",
+        "channel": "community"
+      }
+    }
+  },
+  "include": {
+    "magelocal": [] ,
+    "magecommunity": [
+      "app/code/community/Mridang/Blacklight/*"
+    ],
+    "magecore": [],
+    "magedesign": [
+      "app/design/*"
+    ],
+    "mageetc": [
+      "app/etc/modules/Mridang_Blacklight.xml"
+    ],
+    "magelib": [
+      "lib/phpunit/*",
+      "lib/sebastian/*"
+    ],
+    "magelocale": [],
+    "magemedia": [],
+    "mageskin": [],
+    "mageweb": [],
+    "magetest": [],
+    "mage": []
+  },
+  "exclude": [
+    "vendor",
+    "*.json",
+    "*.lock",
+    "*.tar",
+    ".DS_Store",
+    ".git"
+  ]
+}

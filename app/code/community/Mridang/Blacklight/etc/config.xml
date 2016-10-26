@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<!--
+  ~  Copyright (c) 2016 [Mridang Agarwalla]
+  ~
+  ~  Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~  of this software and associated documentation files (the "Software"), to deal
+  ~  in the Software without restriction, including without limitation the rights
+  ~  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~  copies of the Software, and to permit persons to whom the Software is
+  ~  furnished to do so, subject to the following conditions:
+  ~
+  ~  The above copyright notice and this permission notice shall be included in
+  ~  all copies or substantial portions of the Software.
+  -->
+
+<!--suppress XmlUnboundNsPrefix -->
+<config>
+    <modules>
+        <Mridang_Blacklight>
+            <version>0.1.0</version>
+        </Mridang_Blacklight>
+    </modules>
+    <global>
+        <helpers>
+            <blacklight>
+                <class>Mridang_Blacklight_Helper</class>
+            </blacklight>
+        </helpers>
+        <models>
+            <blacklight>
+                <class>Mridang_Blacklight_Model</class>
+            </blacklight>
+        </models>
+        <blocks>
+            <mridang_blacklight>
+                <class>Mridang_Blacklight_Block</class>
+            </mridang_blacklight>
+        </blocks>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <controller_action_before>
+                        <class>Mridang_Blacklight_Model_Observer</class>
+                        <method>hookToControllerActionPreDispatch</method>
+                    </controller_action_before>
+                </observers>
+            </controller_action_predispatch>
+            <controller_action_postdispatch>
+                <observers>
+                    <controller_action_after>
+                        <class>Mridang_Blacklight_Model_Observer</class>
+                        <method>hookToControllerActionPostDispatch</method>
+                    </controller_action_after>
+                </observers>
+            </controller_action_postdispatch>
+        </events>
+    </global>
+    <frontend>
+        <routers>
+            <mridang>
+                <use>standard</use>
+                <args>
+                    <module>Mridang_Blacklight</module>
+                    <frontName>blacklight</frontName>
+                </args>
+            </mridang>
+        </routers>
+        <layout>
+            <updates>
+                <mridang_blacklight>
+                    <file>blacklight.xml</file>
+                </mridang_blacklight>
+            </updates>
+        </layout>
+    </frontend>
+    <default>
+        <mridang>
+            <settings>
+                <coverage_mode>off</coverage_mode>
+                <coverage_driver>auto</coverage_driver>
+                <output_path>var/coverage</output_path>
+            </settings>
+        </mridang>
+    </default>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <mridang>
+                                            <title>Coverage</title>
+                                        </mridang>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

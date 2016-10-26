@@ -1,0 +1,6 @@
+app/code/community/Mridang/*  app/code/community/Mridang/
+app/design/frontend/base/default/layout/blacklight.xml  app/design/frontend/base/default/layout/blacklight.xml
+app/design/frontend/base/default/template/blacklight/*  app/design/frontend/base/default/template/blacklight/
+app/etc/modules/*  app/etc/modules/
+lib/phpunit/*  lib/phpunit/
+lib/sebastian/*  lib/sebastian/

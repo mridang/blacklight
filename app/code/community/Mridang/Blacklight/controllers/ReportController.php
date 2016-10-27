@@ -13,6 +13,9 @@
  *  all copies or substantial portions of the Software.
  */
 
+// Include the autoloader for composer
+require_once(Mage::getBaseDir('lib') . DS . 'blacklight' . DS . 'autoload.php');
+
 class Mridang_Blacklight_ReportController extends Mage_Core_Controller_Front_Action
 {
     /**

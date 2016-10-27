@@ -13,6 +13,10 @@
  *  The above copyright notice and this permission notice shall be included in
  *  all copies or substantial portions of the Software.
  */
+
+// Include the autoloader for composer
+require_once(Mage::getBaseDir('lib') . DS . 'blacklight' . DS . 'autoload.php');
+
 class Mridang_Blacklight_Helper_Data extends Mage_Core_Helper_Abstract
 {
     /* Constants used for the coverage driver configuration */

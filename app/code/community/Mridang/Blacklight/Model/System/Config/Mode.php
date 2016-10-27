@@ -39,6 +39,10 @@ class Mridang_Blacklight_Model_System_Config_Mode
                 'label' => 'Using Headers',
             ),
             array(
+                'value' => Mridang_Blacklight_Helper_Data::COOKIE,
+                'label' => 'Using Cookies',
+            ),
+            array(
                 'value' => Mridang_Blacklight_Helper_Data::ON,
                 'label' => 'Always On',
             )

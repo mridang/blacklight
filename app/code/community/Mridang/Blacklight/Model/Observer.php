@@ -13,6 +13,10 @@
  *  The above copyright notice and this permission notice shall be included in
  *  all copies or substantial portions of the Software.
  */
+
+// Include the autoloader for composer
+require_once(Mage::getBaseDir('lib') . DS . 'blacklight' . DS . 'autoload.php');
+
 class Mridang_Blacklight_Model_Observer
 {
     /** @var $coverage \SebastianBergmann\CodeCoverage\CodeCoverage */
@@ -46,9 +50,16 @@ class Mridang_Blacklight_Model_Observer
             if ($mode == Mridang_Blacklight_Helper_Data::HEADERS && empty($header)) {
                 return;
             }
+            //If the coverage mode is set to cookies, the we expect a specific cookie that toggles
+            // coverage. If that cookie is omitted, then the coverage is skipped.
+            /** @var Mage_Core_Model_Cookie $cookie */
+            $cookie = Mage::getModel('core/cookie');
+            $cookieContent = $cookie->get(Mridang_Blacklight_Helper_Data::XCOOKIE);
+            if ($mode == Mridang_Blacklight_Helper_Data::COOKIE && empty($cookieContent)) {
+                return;
+            }
         }
 
-        error_log('starting');
         // Only files from the selected extension are added to the whitelist filter. We assume that
         // the extension is a community extension
         $community = str_replace('_', DS, $extension);
@@ -103,6 +114,5 @@ class Mridang_Blacklight_Model_Observer
         $fname = 'var' . DS . 'coverage' . DS . $helper->genUID() . '.cov';
         $writer = new \SebastianBergmann\CodeCoverage\Report\PHP;
         $writer->process($this->coverage, $fname);
-        error_log('finishing');
     }
 }

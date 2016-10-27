@@ -13,6 +13,9 @@
  *  all copies or substantial portions of the Software.
  */
 
+// Include the autoloader for composer
+require_once(Mage::getBaseDir('lib') . DS . 'blacklight' . DS . 'autoload.php');
+
 class Mridang_Blacklight_ReportController extends Mage_Core_Controller_Front_Action
 {
     /**
@@ -25,8 +28,17 @@ class Mridang_Blacklight_ReportController extends Mage_Core_Controller_Front_Act
         $merger = new SebastianBergmann\CodeCoverage\CodeCoverage;
         $facade = new \File_Iterator_Facade;
         $files = $facade->getFilesAsArray(BP . DS . $path, '.cov', '');
-
         if (!empty($files)) {
+            /** @var Mridang_Blacklight_Helper_Data $helper */
+            $helper = Mage::helper('blacklight');
+            $reportName = $helper->getReportName();
+            $reportUrl = sprintf(
+                '%s%s/%s/%s',
+                Mage::getBaseUrl(),
+                $path,
+                $reportName,
+                'index.html'
+            );
             foreach ($files as $file) {
                 /** @noinspection PhpIncludeInspection */
                 $_coverage = include($file);
@@ -36,12 +48,21 @@ class Mridang_Blacklight_ReportController extends Mage_Core_Controller_Front_Act
                     continue;
                 }
                 $merger->merge($_coverage);
+                echo sprintf('Merged: %s <br/>', $file);
                 unset($_coverage);
                 unlink($file);
             }
 
             $writer = new SebastianBergmann\CodeCoverage\Report\Html\Facade;
-            $writer->process($merger, $path . DS . 'report');
+            $writer->process($merger, $path . DS . $reportName);
+            echo sprintf(
+                'Coverage report is generated in <a href="%s">%s</a>',
+                $reportUrl,
+                $reportUrl
+            );
+
+        } else {
+            echo 'No files to process <br/>';
         }
         return;
     }
